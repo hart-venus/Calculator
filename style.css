@@ -23,6 +23,8 @@ body{
 }
 
 #display{
+    display: flex;
+    justify-content: end;
     margin-bottom: 5px;
     background-color: cornsilk;
 } 

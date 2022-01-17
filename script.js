@@ -30,6 +30,18 @@ const display = document.getElementById('display')
 const numButtons = document.getElementsByClassName('num')
 Array.prototype.slice.call(numButtons).forEach(element => {
     element.addEventListener('click', ()=>{
-        display.textContent = display.textContent + element.textContent
+        
+        if (display.textContent != '0'){
+            display.textContent = display.textContent + element.textContent
+        }
+        else{
+            display.textContent = element.textContent
+        }
     })
 });
+
+const clearButton = document.getElementById('clear')
+
+clearButton.addEventListener('click', ()=>{
+    display.textContent = '0'
+})
