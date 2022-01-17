@@ -10,3 +10,19 @@ function multiply(a,b){
 function divide(a,b){
     return(a/b)
 }
+
+function operate(operator,x,y){
+    if(operator==1){
+        return(sum(x,y))
+    }
+    else if(operator==2){
+        return(subtract(x,y))
+    }
+    else if(operator==3){
+        return(multiply(x,y))
+    }
+    else if(operator==4){
+        return(divide(x,y))
+    }
+}
+
