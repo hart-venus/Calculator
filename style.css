@@ -5,7 +5,7 @@ body{
     justify-content: center;
 }
 #calculator{
-    background-color: coral;
+    background-color: cora;
     display: flex;
     padding: 5px;
     flex-flow: column nowrap;
@@ -25,4 +25,11 @@ body{
 #display{
     margin-bottom: 5px;
     background-color: cornsilk;
-}  
+} 
+.num{
+    background-color: rgb(255, 162, 198);
+    border-radius: 6px;
+}
+.operator{
+    background-color: rgb(207, 255, 193);
+}
