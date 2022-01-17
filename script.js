@@ -26,9 +26,10 @@ function operate(operator,x,y){
     }
 }
 
+const display = document.getElementById('display')
 const numButtons = document.getElementsByClassName('num')
 Array.prototype.slice.call(numButtons).forEach(element => {
     element.addEventListener('click', ()=>{
-        console.log('works!')
+        display.textContent = display.textContent + element.textContent
     })
 });
