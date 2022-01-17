@@ -1,4 +1,28 @@
 body{
-    background-color: beige;
+    background-color: cornsilk;
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
+#calculator{
+    background-color: coral;
+    display: flex;
+    padding: 5px;
+    flex-flow: column nowrap;
+
+}
+#buttons{
+    display: flex;
+    flex-flow: row wrap;
+    width: 140px;
+}
+#buttons button{
+    width: 30px;
+    height: 30px;
+    margin: 2px;
+}
+
+#display{
+    margin-bottom: 5px;
+    background-color: cornsilk;
+}  
