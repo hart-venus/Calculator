@@ -26,3 +26,9 @@ function operate(operator,x,y){
     }
 }
 
+const numButtons = document.getElementsByClassName('num')
+Array.prototype.slice.call(numButtons).forEach(element => {
+    element.addEventListener('click', ()=>{
+        console.log('works!')
+    })
+});

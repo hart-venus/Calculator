@@ -5,7 +5,7 @@ body{
     justify-content: center;
 }
 #calculator{
-    background-color: cora;
+    background-color: coral;
     display: flex;
     padding: 5px;
     flex-flow: column nowrap;
