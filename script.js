@@ -12,26 +12,31 @@ function divide(a,b){
 }
 
 function operate(operator,x,y){
-    if(operator==1){
+    if(operator=='+'){
         return(sum(x,y))
     }
-    else if(operator==2){
+    else if(operator=='-'){
         return(subtract(x,y))
     }
-    else if(operator==3){
+    else if(operator=='×'){
         return(multiply(x,y))
     }
-    else if(operator==4){
+    else if(operator=='%'){
         return(divide(x,y))
     }
 }
 
 const display = document.getElementById('display')
 const numButtons = document.getElementsByClassName('num')
+
+let currOperator = ''
+let isResult = false
+let numA = 0
+
 Array.prototype.slice.call(numButtons).forEach(element => {
     element.addEventListener('click', ()=>{
         
-        if (display.textContent != '0'){
+        if ((display.textContent != '0')&&(!isResult)){
             display.textContent = display.textContent + element.textContent
         }
         else{
@@ -40,8 +45,40 @@ Array.prototype.slice.call(numButtons).forEach(element => {
     })
 });
 
+const operatorList = document.getElementsByClassName('operator')
+Array.prototype.slice.call(operatorList).forEach(element => {
+    element.addEventListener('click', ()=>{
+        if(currOperator==''){
+            currOperator = element.textContent
+            
+            numA = display.textContent
+            display.textContent = '0'
+            currFactor = 1
+        }
+        else{
+            display.textContent = operate(currOperator,parseFloat(numA),parseFloat(display.textContent))
+            numA = display.textContent
+            isResult = true
+            currOperator = element.textContent
+        }
+    })
+})
+
+const Equals = document.getElementById('equals')
+Equals.addEventListener('click', ()=>{
+    if(currOperator!=''){
+        display.textContent = operate(currOperator, parseFloat(numA), parseFloat(display.textContent))
+        currOperator = ''
+        isResult=false
+    }
+})
+
 const clearButton = document.getElementById('clear')
 
 clearButton.addEventListener('click', ()=>{
     display.textContent = '0'
+    currOperator = ''
+    numA = 0
+    isResult=false
+
 })
