@@ -107,6 +107,7 @@ pointButton.addEventListener('click', ()=>{
         display.textContent = display.textContent+'.'
     }
 })
+/*
 this.addEventListener('keypress', event => {
     let KC = event.code
 
@@ -121,6 +122,7 @@ this.addEventListener('keypress', event => {
         }
     }
   })
+*/
 document.addEventListener('keydown', event=>{
 
     if(event.key=='='||event.key=='Enter'){
@@ -178,6 +180,21 @@ document.addEventListener('keydown', event=>{
              currOperator = '%'
          }
     }
+    else if(event.key=='+'){
+        if(currOperator==''){
+            currOperator = '+'
+             
+             numA = display.textContent
+             display.textContent = '0'
+             currFactor = 1
+         }
+         else{
+             display.textContent = operate(currOperator,parseFloat(numA),parseFloat(display.textContent))
+             numA = display.textContent
+             isResult = true
+             currOperator = '+'
+         }
+    }
     else if(event.key=='.'){
         if((!display.textContent.includes('.'))&&(display.textContent.length<21)){
             display.textContent = display.textContent+'.'
@@ -191,5 +208,16 @@ document.addEventListener('keydown', event=>{
             display.textContent = 0
         }
     }
-
+    else if(event.key=="0"||event.key=="1"||event.key=="2"||event.key=="3"||event.key=="4"||event.key=="5"||event.key=="6"||event.key=="7"||event.key=="8"||event.key=="9"){
+        
+        if(display.textContent.length<22){
+            if ((display.textContent != '0')&&(!isResult)){
+                display.textContent = display.textContent + event.key
+            }
+            else{
+                display.textContent = event.key
+            }
+        }
+        
+    }
 })
