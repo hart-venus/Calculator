@@ -107,3 +107,89 @@ pointButton.addEventListener('click', ()=>{
         display.textContent = display.textContent+'.'
     }
 })
+this.addEventListener('keypress', event => {
+    let KC = event.code
+
+    if(KC.includes('Digit')){
+        if(display.textContent.length<22){
+            if ((display.textContent != '0')&&(!isResult)){
+                display.textContent = display.textContent + KC.charAt(KC.length-1)
+            }
+            else{
+                display.textContent = KC.charAt(KC.length-1)
+            }
+        }
+    }
+  })
+document.addEventListener('keydown', event=>{
+
+    if(event.key=='='||event.key=='Enter'){
+        if(currOperator!=''){
+            display.textContent = operate(currOperator, parseFloat(numA), parseFloat(display.textContent))
+            currOperator = ''
+            isResult=false
+        }
+    }
+    else if(event.key=='x'||event.key=='*'){
+        
+        if(currOperator==''){
+           currOperator = '×'
+            
+            numA = display.textContent
+            display.textContent = '0'
+            currFactor = 1
+        }
+        else{
+            display.textContent = operate(currOperator,parseFloat(numA),parseFloat(display.textContent))
+            numA = display.textContent
+            isResult = true
+            currOperator = '×'
+        }
+        
+    }
+    else if(event.key=='-'){
+        if(currOperator==''){
+            currOperator = '-'
+             
+             numA = display.textContent
+             display.textContent = '0'
+             currFactor = 1
+         }
+         else{
+             display.textContent = operate(currOperator,parseFloat(numA),parseFloat(display.textContent))
+             numA = display.textContent
+             isResult = true
+             currOperator = '-'
+         }
+         
+    }
+    else if(event.key=='/'||event.key=='%'){
+        if(currOperator==''){
+            currOperator = '%'
+             
+             numA = display.textContent
+             display.textContent = '0'
+             currFactor = 1
+         }
+         else{
+             display.textContent = operate(currOperator,parseFloat(numA),parseFloat(display.textContent))
+             numA = display.textContent
+             isResult = true
+             currOperator = '%'
+         }
+    }
+    else if(event.key=='.'){
+        if((!display.textContent.includes('.'))&&(display.textContent.length<21)){
+            display.textContent = display.textContent+'.'
+        }
+    }
+    else if(event.key=='Backspace'){
+        if(display.textContent.length>1){
+            display.textContent = display.textContent.slice(0,-1)
+        }
+        else{
+            display.textContent = 0
+        }
+    }
+
+})
