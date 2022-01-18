@@ -7,27 +7,47 @@ body{
 #calculator{
     background-color: coral;
     display: flex;
+    height: 600px;
     padding: 5px;
+    justify-content: center;
     flex-flow: column nowrap;
 
 }
 #buttons{
     display: flex;
+    justify-content: center;
     flex-flow: row wrap;
-    width: 140px;
+    width: 675px;
 }
 #buttons button{
-    width: 30px;
-    height: 30px;
+    font-size: 48px;
+    width: 160px;
+    height: 120px;
     margin: 2px;
 }
+.innerdiv{
+    display: flex;
+    justify-self: center;
+    flex: 1;
+}
+#funbuttons{
+    display: flex;
 
+    justify-content: center;
+    width: 675px;
+}
 #display{
+    width: 675px;
+    font-size: 48px;
     display: flex;
     justify-content: end;
     margin-bottom: 5px;
     background-color: cornsilk;
 } 
+.funbutton{
+    flex: 1;
+    font-size: 32px;
+}
 .num{
     background-color: rgb(255, 162, 198);
     border-radius: 6px;

@@ -8,6 +8,9 @@ function multiply(a,b){
     return(a*b)
 }
 function divide(a,b){
+    if(b==0){
+        return(0)
+    }
     return(a/b)
 }
 
@@ -35,13 +38,15 @@ let numA = 0
 
 Array.prototype.slice.call(numButtons).forEach(element => {
     element.addEventListener('click', ()=>{
+        if(display.textContent.length<22){
+            if ((display.textContent != '0')&&(!isResult)){
+                display.textContent = display.textContent + element.textContent
+            }
+            else{
+                display.textContent = element.textContent
+            }
+        }
         
-        if ((display.textContent != '0')&&(!isResult)){
-            display.textContent = display.textContent + element.textContent
-        }
-        else{
-            display.textContent = element.textContent
-        }
     })
 });
 
@@ -81,4 +86,24 @@ clearButton.addEventListener('click', ()=>{
     numA = 0
     isResult=false
 
+})
+
+const backButton = document.getElementById('back')
+
+backButton.addEventListener('click', ()=>{
+    if(display.textContent.length>1){
+        display.textContent = display.textContent.slice(0,-1)
+    }
+    else{
+        display.textContent = 0
+    }
+        
+})
+
+const pointButton = document.getElementById('.')
+
+pointButton.addEventListener('click', ()=>{
+    if((!display.textContent.includes('.'))&&(display.textContent.length<21)){
+        display.textContent = display.textContent+'.'
+    }
 })
